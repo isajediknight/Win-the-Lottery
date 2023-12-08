@@ -1,0 +1,10 @@
+*.pyc
+python/classes/advanced_colors.py
+python/classes/benchmark.py
+python/classes/classic_colors.py
+python/classes/command_line_arguments.py
+python/classes/constants.py
+python/classes/custom_colors.py
+python/classes/everything_datatype.py
+python/classes/testing_results.py
+python/tests/test_everything_datatype.py
