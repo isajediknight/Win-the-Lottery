@@ -131,3 +131,12 @@ class Key:
               \rPrivate Key WIF: %s
               \rPrivate Key WIF compressed: %s 
             """ % (params)
+
+    def get_hex(self):
+        return self.hex
+
+    def get_mainnet_wif(self):
+        return self.mainnet.wif
+
+    def get_mainnet_wifc(self):
+        return self.mainnet.wifc

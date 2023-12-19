@@ -284,9 +284,113 @@ class Benchmark:
             ans += str(self.microseconds) + ' Microseconds'
             self.microseconds_text = 'Microseconds'
 
+    def diff_between_two_timestamps(self,ts1,ts2):
+
+        # Stop the clock
+        end_time = ts2
+        begin_time = ts1
+        total_seconds = (end_time - begin_time).seconds
+        microseconds = (end_time - begin_time).microseconds
+
+        ans = ''
+
+        # I didn't want changes to total_seconds affecting seconds
+        # There has to be a better way to do this
+        counter = 0
+        while (counter < total_seconds):
+            counter += 1
+
+        # Makes it it's own number
+        convert_seconds = counter
+
+        # Weeks
+        weeks = int(convert_seconds // 604800)
+        if (weeks == 0):
+            pass
+        elif (weeks == 1):
+            ans += str(weeks) + ' Week '
+            weeks_text = 'Week'
+        else:
+            ans += str(weeks) + ' Weeks '
+            weeks_text = 'Weeks'
+
+        convert_seconds = convert_seconds - (weeks * 604800)
+
+        # Days
+        days = int(convert_seconds // 86400)
+        if (days == 0):
+            pass
+        elif (days == 1):
+            ans += str(days) + ' Day '
+            days_text = 'Day'
+        else:
+            ans += str(days) + ' Days '
+            days_text = 'Days'
+
+        convert_seconds = convert_seconds - (days * 86400)
+
+        # Hours
+        hours = int(convert_seconds // 3600)
+        if (hours == 0):
+            pass
+        elif (hours == 1):
+            ans += str(hours) + ' Hour '
+            hours_text = 'Hour'
+        else:
+            ans += str(hours) + ' Hours '
+            hours_text = 'Hours'
+
+        convert_seconds = convert_seconds - (hours * 3600)
+
+        # Minutes
+        minutes = int(convert_seconds // 60)
+        if (minutes == 0):
+            pass
+        elif (minutes == 1):
+            ans += str(minutes) + ' Minute '
+            minutes_text = 'Minute'
+        else:
+            ans += str(minutes) + ' Minutes '
+            minutes_text = 'Minutes'
+
+        convert_seconds = int(convert_seconds - (minutes * 60))
+
+        # Seconds
+        if (convert_seconds == 0):
+            pass
+        elif (convert_seconds == 1):
+            ans += str(convert_seconds) + ' Second '
+            seconds_text = 'Second'
+        else:
+            ans += str(convert_seconds) + ' Seconds '
+            seconds_text = 'Seconds'
+
+        # Microseconds
+        if (self.microseconds == 0):
+            pass
+        elif (self.microseconds == 1):
+            ans += str(self.microseconds) + ' Microsecond'
+            microseconds_text = 'Microsecond'
+        else:
+            ans += str(self.microseconds) + ' Microseconds'
+            microseconds_text = 'Microseconds'
+
+        return ans
+
     def milestone(self,description="Taking a timestamp"):
         self.milestone_timestamp.append(datetime.datetime.now())
         self.milestone_description.append(description)
+
+    def print_milestone_results(self):
+        if(self.boolean_running):
+            print("Benchmark is still running")
+        else:
+            print("Program completed")
+
+        counter = 0
+        for i in range(0,len(self.milestone_timestamp)):
+            if (i != 0):
+                print("Milestone " + str(i) + " : " + self.milestone_description[i] + " took " + self.diff_between_two_timestamps(self.milestone_timestamp[i],self.milestone_timestamp[i -1]))
 
     def set_microseconds(self, microseconds):
         self.microseconds = microseconds

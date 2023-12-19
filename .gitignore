@@ -8,3 +8,4 @@ python/classes/custom_colors.py
 python/classes/everything_datatype.py
 python/classes/testing_results.py
 python/tests/test_everything_datatype.py
+inputs/blockchair_bitcoin_addresses_latest.tsv

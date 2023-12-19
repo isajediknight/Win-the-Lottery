@@ -178,6 +178,9 @@ class Address:
                     """ % (params)
 ##        return self.pubkey,self.pubkeyc,self.mainnet.pubaddr1,self.mainnet.pubaddr1,self.mainnet.pubaddr1c,self.mainnet.pubaddr3,self.mainnet.pubaddrbc1_P2WPKH,self.mainnet.pubaddrbc1_P2WSH
 
+    def get_key(self):
+        return self.key
+
     def get_public_key(self):
         return self.pubkey
 
